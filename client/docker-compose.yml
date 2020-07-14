@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  connectivityinnovation:
+    image: connectivityinnovation
+    build:
+      context: .
+      dockerfile: Dockerfile

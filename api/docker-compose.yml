@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  connectivity_innovation_api:
+    image: connectivity_innovation_api
+    build: .
+    ports:
+      - 9090

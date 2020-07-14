@@ -1,0 +1,37 @@
+version: '3.5'
+
+services:
+  client:
+    image: client_image
+    build: client/
+    container_name: client_container
+    command: client/data/message.txt --server-addr server_container:8080
+    networks:
+      - connectivity_innovation
+    depends_on:
+      - server
+      - api
+    
+  server:
+    image: server_image
+    build: server/
+    container_name: server_container
+    command: --addr :8080
+    networks:
+      - connectivity_innovation
+    ports:
+      - 8080:8080
+    
+  api:
+    image: api_image
+    build: api/
+    container_name: api_container
+    command: --addr :9090
+    networks:
+      - connectivity_innovation
+    ports:
+      - 9090:9090
+
+networks:
+  connectivity_innovation:
+    name: connectivity_innovation
